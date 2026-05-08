@@ -478,8 +478,8 @@
     font-size: 11px;
   }
   .slide-body.compact .section-title   { font-size: 10px; margin-top: 10px; margin-bottom: 6px; }
-  .slide-body.compact .priority-table th { padding: 6px 10px; font-size: 10px; }
-  .slide-body.compact .priority-table td { padding: 6px 10px; font-size: 11px; }
+  .slide-body.compact .priority-table th { padding: 4px 8px; font-size: 10px; }
+  .slide-body.compact .priority-table td { padding: 4px 8px; font-size: 11px; }
   .slide-body.compact .alert            { padding: 8px 12px; font-size: 11px; margin-bottom: 6px; }
   .slide-body.compact .alert strong     { font-size: 11px; }
   .slide-body.compact .alert-icon       { font-size: 14px; }
@@ -841,7 +841,7 @@
         <tr><td>CSAT v1 systeme (48h)</td><td><span class="badge-pill badge-red">&#10007; Inactif</span></td><td style="color:var(--text-mid);font-size:12px">Garder inactif — v2 est meilleure</td></tr>
       </tbody>
     </table>
-    <p class="section-title" style="margin-top:14px">Triggers Klaviyo — doublons a corriger</p>
+    <p class="section-title" style="margin-top:8px">Triggers Klaviyo — doublons a corriger</p>
     <div class="alert alert-orange" style="margin-bottom:8px">
       <span class="alert-icon">&#128993;</span>
       <div><strong>Triggers casses avec valeurs vides</strong> — Le trigger "Retour client" (et potentiellement d'autres) contient des champs vides. Comportement impredictible : a auditer et corriger un par un.</div>
@@ -1605,11 +1605,18 @@
     if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                    { e.preventDefault(); prev(); }
   });
 
-  let startX = 0;
-  document.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-  document.addEventListener('touchend',   e => {
+  let startX = 0, startY = 0;
+  document.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
+  document.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 50) dx < 0 ? next() : prev();
+    const dy = e.changedTouches[0].clientY - startY;
+    // Only change slide if swipe is clearly horizontal (not a vertical scroll)
+    if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50) {
+      dx < 0 ? next() : prev();
+    }
   });
 </script>
 </body>
