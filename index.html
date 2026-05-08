@@ -1594,6 +1594,7 @@
     d.onclick = () => goTo(i);
     dotsEl.appendChild(d);
   });
+  updateUI();
 
   function updateUI() {
     document.getElementById('counter').textContent = (current + 1) + ' / ' + total;
