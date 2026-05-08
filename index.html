@@ -584,10 +584,19 @@
     /* Slide 9 plan action — cards stacked */
     .plan-grid { grid-template-columns: 1fr !important; }
 
-    /* Compact overrides on mobile */
-    .slide-body.compact { padding: 12px 14px !important; font-size: 11px; }
+    /* Compact overrides on mobile — must keep bottom padding for nav bar */
+    .slide-body.compact { padding: 12px 14px calc(var(--nav-h) + 12px) !important; font-size: 11px; }
     .slide-body.compact .priority-table td { font-size: 10px; padding: 4px 6px; }
     .slide-body.compact .alert { padding: 7px 10px; }
+
+    /* Cover slides (home + merci): allow scroll so bottom content isn't hidden */
+    .slide-cover {
+      overflow-y: auto;
+      justify-content: flex-start;
+      padding-top: 60px;
+      padding-bottom: calc(var(--nav-h) + 24px);
+    }
+    .slide-cover .cover-logo { position: static; margin-bottom: 20px; }
   }
 
   @media (max-width: 480px) {
