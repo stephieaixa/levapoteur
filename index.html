@@ -283,7 +283,7 @@
     flex: 1;
     background: var(--bg);
     padding: 28px 40px;
-    overflow: auto;
+    overflow: hidden;
   }
 
   /* ============================================
@@ -471,6 +471,132 @@
   }
   .stat-mini .n { font-size: 26px; font-weight: 800; color: var(--brand-dark); }
   .stat-mini .l { font-size: 11px; color: var(--text-mid); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  /* Slides compactes (4, 6, 9) — reduit font/padding pour tout afficher */
+  .slide-body.compact {
+    padding: 14px 24px;
+    font-size: 11px;
+  }
+  .slide-body.compact .section-title   { font-size: 10px; margin-top: 10px; margin-bottom: 6px; }
+  .slide-body.compact .priority-table th { padding: 6px 10px; font-size: 10px; }
+  .slide-body.compact .priority-table td { padding: 6px 10px; font-size: 11px; }
+  .slide-body.compact .alert            { padding: 8px 12px; font-size: 11px; margin-bottom: 6px; }
+  .slide-body.compact .alert strong     { font-size: 11px; }
+  .slide-body.compact .alert-icon       { font-size: 14px; }
+  .slide-body.compact .stat-row         { margin-bottom: 10px; gap: 10px; }
+  .slide-body.compact .stat-mini        { padding: 8px 10px; }
+  .slide-body.compact .stat-mini .n     { font-size: 20px; }
+  .slide-body.compact .stat-mini .l     { font-size: 9px; }
+  .slide-body.compact .checklist li     { padding: 4px 0; font-size: 11px; }
+  .slide-body.compact .checklist .ico   { font-size: 13px; }
+  .slide-body.compact .card             { padding: 10px 14px; }
+  .slide-body.compact .card h3          { font-size: 10px; margin-bottom: 4px; }
+  .slide-body.compact .card .big-num    { font-size: 28px; }
+  .slide-body.compact .progress-bar     { height: 5px; margin-top: 5px; }
+  .slide-body.compact .badge-pill       { font-size: 9px; padding: 2px 7px; }
+  .slide-body.compact .grid-2           { gap: 12px; }
+  .slide-body.compact .grid-3           { gap: 12px; }
+  .slide-body.compact .stat-row         { gap: 10px; }
+  .slide-body.compact table             { font-size: 11px; }
+  .slide-body.compact p                 { font-size: 11px; line-height: 1.4; }
+  .slide-body.compact h4                { font-size: 12px; }
+
+  /* ============================================
+     MOBILE — breakpoint 768px
+  ============================================ */
+  @media (max-width: 768px) {
+
+    :root { --nav-h: 52px; }
+
+    /* Slide body: allow scroll on mobile */
+    .slide-body {
+      overflow-y: auto !important;
+      padding: 14px 16px !important;
+      font-size: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* All grids → single column */
+    .grid-2, .grid-3,
+    .compare, [style*="grid-template-columns"] {
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+    }
+
+    /* Cover slide */
+    .slide-cover { padding: 24px 20px; }
+    .slide-cover h1 { font-size: 28px !important; }
+    .slide-cover .subtitle { font-size: 14px !important; margin-bottom: 20px !important; }
+    .slide-cover .badge { font-size: 11px; padding: 5px 12px; }
+    .cover-stats { gap: 14px; flex-wrap: wrap; }
+    .cover-stat .num { font-size: 24px !important; }
+    .cover-stat .lbl { font-size: 10px; }
+    .cover-logo svg { height: 24px !important; }
+    .divider-v { display: none; }
+
+    /* Slide header */
+    .slide-header { padding: 10px 16px; }
+    .slide-header h2 { font-size: 14px; }
+    .slide-header .tag { display: none; }
+    .omycare-logo svg { height: 22px !important; }
+    .header-left { gap: 10px; }
+
+    /* Cards */
+    .card { padding: 12px; }
+    .card .big-num { font-size: 28px; }
+    .card h3 { font-size: 11px; }
+
+    /* Tables */
+    .priority-table th,
+    .priority-table td { padding: 6px 8px; font-size: 11px; }
+
+    /* Alerts */
+    .alert { padding: 10px 12px; font-size: 11px; margin-bottom: 8px; }
+    .alert strong { font-size: 11px; }
+
+    /* Checklist */
+    .checklist li { font-size: 12px; padding: 5px 0; }
+
+    /* Timeline (slide 9) → compact */
+    .tl-dot { width: 28px; height: 28px; font-size: 11px; }
+    .tl-content h4 { font-size: 12px; }
+    .tl-content p { font-size: 11px; }
+
+    /* Stat row */
+    .stat-row { flex-wrap: wrap; }
+    .stat-mini { min-width: 42%; }
+    .stat-mini .n { font-size: 20px; }
+
+    /* Flow steps */
+    .flow { flex-direction: column; align-items: flex-start; }
+    .flow-arrow { transform: rotate(90deg); margin: 0 auto; }
+
+    /* Nav bar */
+    .nav-bar { gap: 12px; }
+    .nav-bar .nav-btn { width: 32px; height: 32px; font-size: 14px; }
+    .nav-bar .nav-counter { font-size: 12px; min-width: 40px; }
+    .nav-bar .dot { width: 5px; height: 5px; }
+    .nav-bar .dot.active { width: 16px; }
+
+    /* Slide 6 statuts — hide less critical columns on mobile */
+    .statuts-col-extra { display: none; }
+
+    /* Slide 9 plan action — cards stacked */
+    .plan-grid { grid-template-columns: 1fr !important; }
+
+    /* Compact overrides on mobile */
+    .slide-body.compact { padding: 12px 14px !important; font-size: 11px; }
+    .slide-body.compact .priority-table td { font-size: 10px; padding: 4px 6px; }
+    .slide-body.compact .alert { padding: 7px 10px; }
+  }
+
+  @media (max-width: 480px) {
+    .slide-cover h1 { font-size: 22px !important; }
+    .slide-header h2 { font-size: 13px; }
+    .priority-table th { display: none; }
+    .priority-table td:first-child { font-weight: 600; }
+  }
+
 </style>
 </head>
 <body>
@@ -691,7 +817,7 @@
     </div>
     <span class="tag">53 triggers · 7 automations</span>
   </div>
-  <div class="slide-body">
+  <div class="slide-body compact">
     <!-- MODIFIER : les 4 chiffres clés -->
     <div class="stat-row">
       <div class="stat-mini"><div class="n" style="color:var(--green)">35</div><div class="l">Triggers actifs</div></div>
@@ -823,7 +949,7 @@
     </div>
     <span class="tag">10 statuts configures · 2 problemes identifies</span>
   </div>
-  <div class="slide-body" style="padding:22px 32px">
+  <div class="slide-body compact" style="padding:14px 24px">
     <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px">
 
       <!-- COLONNE GAUCHE : tableau complet des 10 statuts -->
@@ -842,14 +968,14 @@
             <tr>
               <td>Nouveau</td>
               <td><span class="badge-pill" style="background:#F3F4F6;color:#374151;border:1px solid #D1D5DB;font-size:10px">New</span></td>
-              <td style="color:#6B7280">Ouvert</td>
-              <td><span style="font-size:10px;color:#6B7280">Defaut</span></td>
+              <td class="statuts-col-extra" style="color:#6B7280">Ouvert</td>
+              <td class="statuts-col-extra"><span style="font-size:10px;color:#6B7280">Defaut</span></td>
             </tr>
             <tr>
               <td>Ouvert</td>
               <td><span class="badge-pill badge-blue" style="font-size:10px">Open</span></td>
-              <td style="color:#6B7280">Ouvert</td>
-              <td><span style="font-size:10px;color:#6B7280">Defaut</span></td>
+              <td class="statuts-col-extra" style="color:#6B7280">Ouvert</td>
+              <td class="statuts-col-extra"><span style="font-size:10px;color:#6B7280">Defaut</span></td>
             </tr>
             <tr style="background:#EFF6FF">
               <td><strong>En attente de reception (SAV)</strong></td>
@@ -909,7 +1035,7 @@
         <p class="section-title" style="margin-top:0">Problemes identifies</p>
 
         <!-- PROBLEME 1 : On-hold desactive -->
-        <div style="background:#FEF2F2;border:1px solid #FCA5A5;border-left:4px solid #EF4444;border-radius:10px;padding:14px 16px">
+        <div style="background:#FEF2F2;border:1px solid #FCA5A5;border-left:4px solid #EF4444;border-radius:10px;padding:10px 13px">
           <div style="font-size:13px;font-weight:700;color:#991B1B;margin-bottom:6px">&#128308; Statut "En pause" (On-hold) desactive</div>
           <p style="font-size:12px;color:#7F1D1D;line-height:1.5">La feature <code style="background:#FEE2E2;padding:1px 5px;border-radius:3px">on_hold_status</code> est desactivee au niveau du compte. Le statut existe mais ne peut pas etre utilise par les agents.</p>
           <div style="margin-top:8px;background:white;border-radius:6px;padding:8px 10px;font-size:11px;color:#374151">
@@ -920,7 +1046,7 @@
         </div>
 
         <!-- PROBLEME 2 : SAV dans Pending -->
-        <div style="background:#FFFBEB;border:1px solid #FCD34D;border-left:4px solid #F97316;border-radius:10px;padding:14px 16px">
+        <div style="background:#FFFBEB;border:1px solid #FCD34D;border-left:4px solid #F97316;border-radius:10px;padding:10px 13px">
           <div style="font-size:13px;font-weight:700;color:#92400E;margin-bottom:6px">&#128993; Processus SAV classe en Pending — a revoir</div>
           <p style="font-size:12px;color:#78350F;line-height:1.5">Les statuts <strong>"En attente (Retour SAV)"</strong> et <strong>"En attente de reception (SAV)"</strong> sont en categorie <strong>Pending</strong>, ce qui signifie que le compteur SLA tourne comme si on attendait le client.</p>
           <p style="font-size:12px;color:#78350F;line-height:1.5;margin-top:6px">Or quand le produit est chez nous pour test/diagnostic, le blocage est <strong>cote entreprise</strong> — le statut logique serait <strong>On-hold</strong>.</p>
@@ -930,7 +1056,7 @@
         </div>
 
         <!-- RECOMMANDATION -->
-        <div style="background:#EFF6FF;border:1px solid #93C5FD;border-left:4px solid #3B82F6;border-radius:10px;padding:14px 16px">
+        <div style="background:#EFF6FF;border:1px solid #93C5FD;border-left:4px solid #3B82F6;border-radius:10px;padding:10px 13px">
           <div style="font-size:13px;font-weight:700;color:#1E40AF;margin-bottom:6px">&#128161; Recommandation</div>
           <ul style="font-size:12px;color:#1E3A8A;line-height:1.7;padding-left:14px">
             <li>Activer la feature <strong>On-hold</strong> dans Admin &gt; Compte</li>
@@ -1107,19 +1233,19 @@
     </div>
     <span class="tag">Semaine 1 → Trimestre 1</span>
   </div>
-  <div class="slide-body" style="padding:20px 32px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 28px">
+  <div class="slide-body compact" style="padding:12px 20px">
+    <div class="plan-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px 28px">
 
       <!-- S1 -->
       <div style="background:white;border-radius:12px;border:1px solid #E5E7EB;overflow:hidden">
-        <div style="background:var(--red);padding:10px 16px;display:flex;align-items:center;gap:10px">
+        <div style="background:var(--red);padding:8px 14px;display:flex;align-items:center;gap:10px">
           <div style="background:rgba(255,255,255,0.2);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:13px;flex-shrink:0">S1</div>
           <div>
             <div style="color:white;font-weight:700;font-size:13px">Semaine 1 — Actions critiques</div>
             <div style="color:rgba(255,255,255,0.7);font-size:11px">Moins de 2h au total — impact immediat</div>
           </div>
         </div>
-        <div style="padding:12px 16px">
+        <div style="padding:8px 12px">
           <ul class="checklist" style="gap:0">
             <li><span class="ico">&#9744;</span><div>Activer la <strong>CSAT v2</strong> (automation ID: 23825877644957)</div></li>
             <li><span class="ico">&#9744;</span><div>Activer <strong>customer_satisfaction</strong> (Admin &gt; Compte)</div></li>
@@ -1133,14 +1259,14 @@
 
       <!-- S2 -->
       <div style="background:white;border-radius:12px;border:1px solid #E5E7EB;overflow:hidden">
-        <div style="background:var(--orange);padding:10px 16px;display:flex;align-items:center;gap:10px">
+        <div style="background:#EAB308;padding:8px 14px;display:flex;align-items:center;gap:10px">
           <div style="background:rgba(255,255,255,0.2);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:13px;flex-shrink:0">S2</div>
           <div>
             <div style="color:white;font-weight:700;font-size:13px">Semaine 2 — Haute priorite</div>
             <div style="color:rgba(255,255,255,0.7);font-size:11px">2 a 4h — corrections structurelles</div>
           </div>
         </div>
-        <div style="padding:12px 16px">
+        <div style="padding:8px 12px">
           <ul class="checklist" style="gap:0">
             <li><span class="ico">&#9744;</span><div>Activer <strong>relance pending 24h</strong> (automation ID: 7407226950173)</div></li>
             <li><span class="ico">&#9744;</span><div>Activer la feature <strong>On-hold</strong> + migrer statuts SAV de Pending vers On-hold</div></li>
@@ -1154,14 +1280,14 @@
 
       <!-- M1 -->
       <div style="background:white;border-radius:12px;border:1px solid #E5E7EB;overflow:hidden">
-        <div style="background:#CA8A04;padding:10px 16px;display:flex;align-items:center;gap:10px">
+        <div style="background:#B45309;padding:8px 14px;display:flex;align-items:center;gap:10px">
           <div style="background:rgba(255,255,255,0.2);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:13px;flex-shrink:0">M1</div>
           <div>
             <div style="color:white;font-weight:700;font-size:13px">Mois 1 — Ameliorations importantes</div>
             <div style="color:rgba(255,255,255,0.7);font-size:11px">1 journee — structure et organisation</div>
           </div>
         </div>
-        <div style="padding:12px 16px">
+        <div style="padding:8px 12px">
           <ul class="checklist" style="gap:0">
             <li><span class="ico">&#9744;</span><div>Personnaliser le <strong>template email + logo OmyCare</strong></div></li>
             <li><span class="ico">&#9744;</span><div>Creer 3 <strong>formulaires de ticket par marque</strong> avec champs conditionnels</div></li>
@@ -1176,14 +1302,14 @@
 
       <!-- T1 -->
       <div style="background:white;border-radius:12px;border:1px solid #E5E7EB;overflow:hidden">
-        <div style="background:var(--brand-accent);padding:10px 16px;display:flex;align-items:center;gap:10px">
+        <div style="background:var(--brand-accent);padding:8px 14px;display:flex;align-items:center;gap:10px">
           <div style="background:rgba(255,255,255,0.2);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:13px;flex-shrink:0">T1</div>
           <div>
             <div style="color:white;font-weight:700;font-size:13px">Trimestre 1 — Strategique</div>
             <div style="color:rgba(255,255,255,0.7);font-size:11px">Automatisation avancee et reporting</div>
           </div>
         </div>
-        <div style="padding:12px 16px">
+        <div style="padding:8px 12px">
           <ul class="checklist" style="gap:0">
             <li><span class="ico">&#9744;</span><div>Configurer l'<strong>agent IA</strong> sur les canaux (deflection 20-30%)</div></li>
             <li><span class="ico">&#9744;</span><div>Activer <strong>routing omnicanal</strong> + skill-based routing</div></li>
@@ -1321,12 +1447,12 @@
           <div style="font-size:11px;font-weight:700;color:#6D28D9;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Mail &amp; Template</div>
           <ul class="checklist" style="margin-bottom:12px">
             <li><span style="color:#EF4444;font-size:13px">&#11044;</span><div><strong>Aucun email personnalise</strong><br><span style="font-size:11px;color:#6B7280">Les emails envoyes aux clients ne sont pas brandises</span></div></li>
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div>Personnaliser le template + ajouter le logo OmyCare</div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div>Personnaliser le template + ajouter le logo OmyCare</div></li>
             <li><span style="color:#EF4444;font-size:13px">&#11044;</span><div><strong>Footer email contient encore le watermark Zendesk</strong><br><span style="font-size:11px;color:#6B7280">Non professionnel — a supprimer en priorite</span></div></li>
           </ul>
           <div style="font-size:11px;font-weight:700;color:#6D28D9;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Vues</div>
           <ul class="checklist" style="margin-bottom:12px">
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div>Creer des dossiers pour organiser les vues</div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div>Creer des dossiers pour organiser les vues</div></li>
             <li><span style="color:#22C55E;font-size:13px">&#11044;</span><div>Ajouter des emoticones pour identifier rapidement</div></li>
           </ul>
           <div style="font-size:11px;font-weight:700;color:#6D28D9;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Groupes &amp; Canaux</div>
@@ -1345,19 +1471,19 @@
         <div style="background:white;border-radius:0 0 12px 12px;border:1px solid #E5E7EB;border-top:none;padding:14px 16px;flex:1">
           <div style="font-size:11px;font-weight:700;color:#6D28D9;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Triggers</div>
           <ul class="checklist" style="margin-bottom:12px">
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div><strong>Triggers casses avec valeurs vides</strong><br><span style="font-size:11px;color:#6B7280">Ex: trigger "Retour client" avec champs vides — comportement impredictible</span></div></li>
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div>Pas de trigger pour la priorite Normale</div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div><strong>Triggers casses avec valeurs vides</strong><br><span style="font-size:11px;color:#6B7280">Ex: trigger "Retour client" avec champs vides — comportement impredictible</span></div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div>Pas de trigger pour la priorite Normale</div></li>
           </ul>
           <div style="font-size:11px;font-weight:700;color:#6D28D9;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Automations</div>
           <ul class="checklist" style="margin-bottom:12px">
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div>Configurer un "bump" sur les tickets resolus sans reponse</div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div>Configurer un "bump" sur les tickets resolus sans reponse</div></li>
             <li><span style="color:#EF4444;font-size:13px">&#11044;</span><div><strong>CSAT inactive</strong> — aucune mesure de satisfaction</div></li>
           </ul>
           <div style="font-size:11px;font-weight:700;color:#6D28D9;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">SLA &amp; Macros</div>
           <ul class="checklist">
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div>Next reply time et resolution time manquants</div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div>Next reply time et resolution time manquants</div></li>
             <li><span style="color:#EF4444;font-size:13px">&#11044;</span><div><strong>SLA uniquement sur first reply — et inoperant sans le trigger associe</strong></div></li>
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div>Organiser les macros en dossiers avec le prefixe "::"</div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div>Organiser les macros en dossiers avec le prefixe "::"</div></li>
           </ul>
         </div>
       </div>
@@ -1370,7 +1496,7 @@
         <div style="background:white;border-radius:0 0 12px 12px;border:1px solid #E5E7EB;border-top:none;padding:14px 16px;flex:1">
           <div style="font-size:11px;font-weight:700;color:#6D28D9;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Explore &amp; Reporting</div>
           <ul class="checklist" style="margin-bottom:12px">
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div>Pas de dashboard personnalise base sur les champs et statuts personnalises</div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div>Pas de dashboard personnalise base sur les champs et statuts personnalises</div></li>
           </ul>
           <div style="font-size:11px;font-weight:700;color:#6D28D9;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Base de connaissances</div>
           <ul class="checklist" style="margin-bottom:12px">
@@ -1378,9 +1504,9 @@
           </ul>
           <div style="font-size:11px;font-weight:700;color:#6D28D9;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Applications &amp; Statuts</div>
           <ul class="checklist">
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div>Application Time Tracking absente — impossible de mesurer le temps par ticket</div></li>
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div>Statut "On-hold" inactif globalement</div></li>
-            <li><span style="color:#F97316;font-size:13px">&#11044;</span><div><strong>Processus SAV gere en "En attente" (Pending)</strong><br><span style="font-size:11px;color:#6B7280">A discuter : si le blocage est cote entreprise, le statut correct serait "On-hold" — permet aussi de mesurer les delais par statut</span></div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div>Application Time Tracking absente — impossible de mesurer le temps par ticket</div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div>Statut "On-hold" inactif globalement</div></li>
+            <li><span style="color:#EAB308;font-size:13px">&#11044;</span><div><strong>Processus SAV gere en "En attente" (Pending)</strong><br><span style="font-size:11px;color:#6B7280">A discuter : si le blocage est cote entreprise, le statut correct serait "On-hold" — permet aussi de mesurer les delais par statut</span></div></li>
           </ul>
         </div>
       </div>
